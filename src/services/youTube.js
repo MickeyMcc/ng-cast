@@ -20,12 +20,12 @@ angular.module('video-player')
 
     this.search = _.debounce(this.getRepo.bind(this), 500);
 
-    this.details = function(options, callback) {
+    this.fastDetails = function(options, callback) {
       return $http({
         method: 'GET',
         url: 'https://www.googleapis.com/youtube/v3/videos',
         params: {
-          part: 'snippet,statistics',
+          part: 'statistics',
           id: options.id,
           key: options.key,
         }
@@ -34,4 +34,6 @@ angular.module('video-player')
           callback(data.data.items);
         });
     };
+
+    this.details = _.debounce(this.fastDetails.bind(this), 500);
   });

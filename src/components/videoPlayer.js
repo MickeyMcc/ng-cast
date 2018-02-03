@@ -7,7 +7,6 @@ angular.module('video-player')
     },
     templateUrl: 'src/templates/videoPlayer.html',
     controller: function () {
-      console.log('player cont', this);
       this.autoplay = true;
       
       this.toggleAutoplay = function() {

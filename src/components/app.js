@@ -19,7 +19,9 @@ app.controller('AppCtrl', function(youTube) {
   this.url = '';
 
   this.titleClick = (video) => {
-    this.currentVideo = this.getDetails(video);
+    this.currentVideo = video;
+
+    this.videos = this.newSearch(video.snippet.title);
   };
 
   this.getDetails = (video) => {
@@ -37,7 +39,9 @@ app.controller('AppCtrl', function(youTube) {
 
   this.handleSearch = (newVideos) => {
     this.videos = newVideos;
-    this.currentVideo = newVideos[0];
+    if (!this.currentVideo) {
+      this.currentVideo = newVideos[0];
+    }
     this.url = 'https://www.youtube.com/embed/' + this.currentVideo.id.videoId;
     this.statistics = this.getDetails(this.currentVideo);
   };

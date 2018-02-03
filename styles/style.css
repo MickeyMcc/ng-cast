@@ -90,6 +90,10 @@ body {
   margin-top: 12px;
 }
 
+.channel {
+  font-style: italic;
+}
+
 .description {
   margin-top: 5px;
 }
