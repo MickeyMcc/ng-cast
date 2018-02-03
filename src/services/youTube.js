@@ -6,8 +6,8 @@ angular.module('video-player')
         url: 'https://www.googleapis.com/youtube/v3/search/',
         params: {
           part: 'snippet',
-          key: options.key || window.YOUTUBE_API_KEY,
-          q: options.query || 'corgi puppies',
+          key: options.key,
+          q: options.query,
           maxResults: options.max || 5,
           type: 'video',
           videoEmbeddable: true
@@ -19,4 +19,20 @@ angular.module('video-player')
     };
 
     this.search = _.debounce(this.getRepo.bind(this), 500);
+
+    this.details = function(options, callback) {
+      console.log(options.id);
+      return $http({
+        method: 'GET',
+        url: 'https://www.googleapis.com/youtube/v3/videos',
+        params: {
+          part: 'statistics',
+          id: options.id,
+          key: options.key,
+        }
+      })
+        .then(function(data) {
+          callback(data.data.items);
+        });
+    };
   });

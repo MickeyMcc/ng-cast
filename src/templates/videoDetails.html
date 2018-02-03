@@ -1,0 +1,11 @@
+<div class='video-details'>
+  <h3 
+    ng-update = '$ctrl.getDetails()'> {{ $ctrl.video.snippet.title }} 
+  </h3>
+  <div class = 'statistics'>
+  <span> {{$ctrl.getViews()}} Views </span>
+  <span> {{$ctrl.statistics.likeCount}} Likes </span>
+  <span> {{$ctrl.statistics.dislikeCount}} Dislikes </span>
+  </div>
+  <div>{{ $ctrl.video.snippet.description }}</div>
+</div>

@@ -1,9 +1,8 @@
 <div class="video-player">
   <div class="embed-responsive embed-responsive-16by9">
-    <iframe class="embed-responsive-item" ng-src={{$ctrl.url}} allowFullScreen></iframe>
+    <iframe class="embed-responsive-item" ng-src={{$ctrl.buildUrl()}} allowFullScreen></iframe>
   </div>
-  <div class="video-player-details">
-    <h3> {{ $ctrl.video.snippet.title }} </h3>
-    <div>{{ $ctrl.video.snippet.description }}</div>
-  </div>
+  <button class = 'autoplay' ng-click = '$ctrl.toggleAutoplay()'> {{$ctrl.autoplayMessage()}} 
+  </button>
+
 </div>
