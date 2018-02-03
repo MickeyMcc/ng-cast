@@ -21,12 +21,11 @@ angular.module('video-player')
     this.search = _.debounce(this.getRepo.bind(this), 500);
 
     this.details = function(options, callback) {
-      console.log(options.id);
       return $http({
         method: 'GET',
         url: 'https://www.googleapis.com/youtube/v3/videos',
         params: {
-          part: 'statistics',
+          part: 'snippet,statistics',
           id: options.id,
           key: options.key,
         }
